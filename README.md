@@ -161,6 +161,29 @@ sakai-ng/
 - [PrimeNG Documentation](https://primeng.org/)
 - [Angular CLI Reference](https://angular.dev/tools/cli)
 
+## 🛡️ Seguridad y Calidad Enterprise
+
+Este proyecto sigue estrictos estándares de seguridad y calidad:
+
+### Auditoría de Seguridad
+El proyecto cuenta con un script de auditoría automatizada que verifica vulnerabilidades en dependencias de producción.
+
+```bash
+npm run audit:security
+```
+*Nota: Las vulnerabilidades de desarrollo (como `esbuild` o `undici` en herramientas CLI) están documentadas y excluidas del gate de producción.*
+
+### Accesibilidad (a11y)
+Cumplimiento verificado de estándares básicos de accesibilidad:
+- Etiquetas `aria-label` en controles interactivos.
+- Textos alternativos (`alt`) dinámicos en imágenes.
+- Verificación automática mediante `npm run lint`.
+
+### Code Quality
+- **Strict Mode:** TypeScript configurado en modo estricto.
+- **Linter:** ESLint con configuración "Flat Config" y reglas de Angular recomendadas.
+- **Formato:** Prettier para consistencia de código (`npm run format`).
+
 ## 📄 License
 
 See [LICENSE.md](LICENSE.md) for details.

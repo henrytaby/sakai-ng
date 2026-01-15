@@ -14,7 +14,7 @@
     "lint:fix": "eslint \"src/**/*.{ts,html}\" --fix",
     "format": "prettier --write \"**/*.{js,mjs,ts,mts,d.ts,html}\" --cache",
     "format:check": "prettier --check \"**/*.{js,mjs,ts,mts,d.ts,html}\"",
-    "audit:security": "npm audit --audit-level=moderate",
+    "audit:security": "npm audit --production --audit-level=moderate",
     "update:check": "npm outdated"
   },
   "private": true,
@@ -30,7 +30,6 @@
     "@primeuix/themes": "^2.0.2",
     "@tailwindcss/postcss": "^4.1.11",
     "chart.js": "4.4.2",
-    "primeclt": "^0.1.5",
     "primeicons": "^7.0.0",
     "primeng": "^21.0.3",
     "rxjs": "~7.8.2",
@@ -59,6 +58,7 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "postcss": "^8.5.3",
     "prettier": "^3.6.2",
+    "primeclt": "^0.1.5",
     "tailwindcss": "^4.1.11",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.53.0"
