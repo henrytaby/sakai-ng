@@ -1,10 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 
-interface InventoryStatus {
-    label: string;
-    value: string;
-}
+
 
 export interface Product {
     id?: string;
@@ -22,6 +19,41 @@ export interface Product {
 @Injectable()
 export class ProductService {
     private http = inject(HttpClient);
+
+    status: string[] = ['OUTOFSTOCK', 'INSTOCK', 'LOWSTOCK'];
+
+    productNames: string[] = [
+        'Bamboo Watch',
+        'Black Watch',
+        'Blue Band',
+        'Blue T-Shirt',
+        'Bracelet',
+        'Brown Purse',
+        'Chakra Bracelet',
+        'Galaxy Earrings',
+        'Game Controller',
+        'Gaming Set',
+        'Gold Phone Case',
+        'Green Earbuds',
+        'Green T-Shirt',
+        'Grey T-Shirt',
+        'Headphones',
+        'Light Green T-Shirt',
+        'Lime Band',
+        'Mini Speakers',
+        'Painted Phone Case',
+        'Pink Band',
+        'Pink Purse',
+        'Purple Band',
+        'Purple Gemstone Necklace',
+        'Purple T-Shirt',
+        'Shoes',
+        'Sneakers',
+        'Teal T-Shirt',
+        'Yellow Earbuds',
+        'Yoga Mat',
+        'Yoga Set'
+    ];
 
     getProductsData() {
         return [
@@ -1222,45 +1254,9 @@ export class ProductService {
         ];
     }
 
-    status: string[] = ['OUTOFSTOCK', 'INSTOCK', 'LOWSTOCK'];
 
-    productNames: string[] = [
-        'Bamboo Watch',
-        'Black Watch',
-        'Blue Band',
-        'Blue T-Shirt',
-        'Bracelet',
-        'Brown Purse',
-        'Chakra Bracelet',
-        'Galaxy Earrings',
-        'Game Controller',
-        'Gaming Set',
-        'Gold Phone Case',
-        'Green Earbuds',
-        'Green T-Shirt',
-        'Grey T-Shirt',
-        'Headphones',
-        'Light Green T-Shirt',
-        'Lime Band',
-        'Mini Speakers',
-        'Painted Phone Case',
-        'Pink Band',
-        'Pink Purse',
-        'Purple Band',
-        'Purple Gemstone Necklace',
-        'Purple T-Shirt',
-        'Shoes',
-        'Sneakers',
-        'Teal T-Shirt',
-        'Yellow Earbuds',
-        'Yoga Mat',
-        'Yoga Set'
-    ];
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     getProductsMini() {
         return Promise.resolve(this.getProductsData().slice(0, 5));

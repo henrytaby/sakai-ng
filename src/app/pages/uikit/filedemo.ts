@@ -55,10 +55,7 @@ export class FileDemo {
 
     uploadedFiles: any[] = [];
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     onUpload(event: any) {
         for (const file of event.files) {

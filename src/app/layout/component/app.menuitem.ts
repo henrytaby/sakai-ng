@@ -21,6 +21,7 @@ import { LayoutService } from '../service/layout.service';
                 <a
                     [attr.href]="item.url"
                     (click)="itemClick($event)"
+                    (keydown.enter)="itemClick($event)"
                     [ngClass]="item.styleClass"
                     [attr.target]="item.target"
                     tabindex="0"
@@ -36,6 +37,7 @@ import { LayoutService } from '../service/layout.service';
             @if (item.routerLink && !item.items && item.visible !== false) {
                 <a
                     (click)="itemClick($event)"
+                    (keydown.enter)="itemClick($event)"
                     [ngClass]="item.styleClass"
                     [routerLink]="item.routerLink"
                     routerLinkActive="active-route"
@@ -120,8 +122,7 @@ export class AppMenuitem implements OnInit, OnDestroy {
 
     key: string = '';
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
+
 
     constructor() {
         this.menuSourceSubscription = this.layoutService.menuSource$.subscribe((value) => {
@@ -140,7 +141,7 @@ export class AppMenuitem implements OnInit, OnDestroy {
             this.active = false;
         });
 
-        this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((params) => {
+        this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
             if (this.item.routerLink) {
                 this.updateActiveStateFromRoute();
             }

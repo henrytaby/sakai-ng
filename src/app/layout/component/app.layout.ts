@@ -36,8 +36,7 @@ export class AppLayout implements OnDestroy {
 
     @ViewChild(AppTopbar) appTopBar!: AppTopbar;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
+
 
     constructor() {
         this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {

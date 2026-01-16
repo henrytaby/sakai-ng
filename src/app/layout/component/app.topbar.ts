@@ -12,7 +12,7 @@ import { LayoutService } from '../service/layout.service';
     imports: [RouterModule, CommonModule, StyleClassModule, AppConfigurator],
     template: ` <div class="layout-topbar">
         <div class="layout-topbar-logo-container">
-            <button class="layout-menu-button layout-topbar-action" (click)="layoutService.onMenuToggle()">
+            <button class="layout-menu-button layout-topbar-action" (click)="layoutService.onMenuToggle()" (keydown.enter)="layoutService.onMenuToggle()">
                 <i class="pi pi-bars"></i>
             </button>
             <a class="layout-topbar-logo" routerLink="/">
@@ -50,7 +50,7 @@ import { LayoutService } from '../service/layout.service';
 
         <div class="layout-topbar-actions">
             <div class="layout-config-menu">
-                <button type="button" class="layout-topbar-action" (click)="toggleDarkMode()">
+                <button type="button" class="layout-topbar-action" (click)="toggleDarkMode()" (keydown.enter)="toggleDarkMode()">
                     <i
                         [ngClass]="{
                             'pi ': true,
@@ -68,6 +68,8 @@ import { LayoutService } from '../service/layout.service';
                         leaveToClass="hidden"
                         leaveActiveClass="animate-fadeout"
                         [hideOnOutsideClick]="true"
+                        type="button"
+                        (keydown.enter)="0"
                     >
                         <i class="pi pi-palette"></i>
                     </button>
@@ -83,6 +85,8 @@ import { LayoutService } from '../service/layout.service';
                 leaveToClass="hidden"
                 leaveActiveClass="animate-fadeout"
                 [hideOnOutsideClick]="true"
+                type="button"
+                (keydown.enter)="0"
             >
                 <i class="pi pi-ellipsis-v"></i>
             </button>
@@ -111,10 +115,7 @@ export class AppTopbar {
 
     items!: MenuItem[];
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     toggleDarkMode() {
         this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));

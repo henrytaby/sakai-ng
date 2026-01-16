@@ -100,27 +100,6 @@ export class LayoutService {
         });
     }
 
-    private handleDarkModeTransition(config: layoutConfig): void {
-        if ((document as any).startViewTransition) {
-            this.startViewTransition(config);
-        } else {
-            this.toggleDarkMode(config);
-            this.onTransitionEnd();
-        }
-    }
-
-    private startViewTransition(config: layoutConfig): void {
-        const transition = (document as any).startViewTransition(() => {
-            this.toggleDarkMode(config);
-        });
-
-        transition.ready
-            .then(() => {
-                this.onTransitionEnd();
-            })
-            .catch(() => {});
-    }
-
     toggleDarkMode(config?: layoutConfig): void {
         const _config = config || this.layoutConfig();
 
@@ -129,13 +108,6 @@ export class LayoutService {
         } else {
             document.documentElement.classList.remove('app-dark');
         }
-    }
-
-    private onTransitionEnd() {
-        this.transitionComplete.set(true);
-        setTimeout(() => {
-            this.transitionComplete.set(false);
-        });
     }
 
     onMenuToggle() {
@@ -183,5 +155,35 @@ export class LayoutService {
 
     reset() {
         this.resetSource.next(true);
+    }
+
+    private handleDarkModeTransition(config: layoutConfig): void {
+        if ((document as any).startViewTransition) {
+            this.startViewTransition(config);
+        } else {
+            this.toggleDarkMode(config);
+            this.onTransitionEnd();
+        }
+    }
+
+    private startViewTransition(config: layoutConfig): void {
+        const transition = (document as any).startViewTransition(() => {
+            this.toggleDarkMode(config);
+        });
+
+        transition.ready
+            .then(() => {
+                this.onTransitionEnd();
+            })
+            .catch(() => {
+                // ignore
+            });
+    }
+
+    private onTransitionEnd() {
+        this.transitionComplete.set(true);
+        setTimeout(() => {
+            this.transitionComplete.set(false);
+        });
     }
 }

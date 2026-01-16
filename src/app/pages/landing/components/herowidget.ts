@@ -3,7 +3,7 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 
 @Component({
-    selector: 'hero-widget',
+    selector: 'app-hero-widget',
     imports: [ButtonModule, RippleModule],
     template: `
         <div
@@ -25,6 +25,7 @@ import { RippleModule } from 'primeng/ripple';
                     type="button"
                     label="Get Started"
                     class="text-xl! mt-8 px-4!"
+                    aria-label="Get Started"
                 ></button>
             </div>
             <div class="flex justify-center md:justify-end">

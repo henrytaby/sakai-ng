@@ -72,10 +72,7 @@ export class MessagesDemo {
 
     email: string | undefined;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     showInfoViaToast() {
         this.service.add({ severity: 'info', summary: 'Info Message', detail: 'PrimeNG rocks' });

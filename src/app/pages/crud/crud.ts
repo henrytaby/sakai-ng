@@ -308,10 +308,7 @@ export class Crud implements OnInit {
 
     cols!: Column[];
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     exportCSV() {
         this.dt.exportCSV();

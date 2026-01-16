@@ -21,7 +21,7 @@ import { Product, ProductService } from '../service/product.service';
                 [circular]="false"
                 [responsiveOptions]="carouselResponsiveOptions"
             >
-                <ng-template let-product #item>
+                <ng-template let-product pTemplate="item">
                     <div class="border border-surface rounded-border m-2 p-4">
                         <div class="mb-4">
                             <div class="relative mx-auto">
@@ -67,10 +67,10 @@ import { Product, ProductService } from '../service/product.service';
                 [containerStyle]="{ 'max-width': '640px' }"
                 [numVisible]="5"
             >
-                <ng-template #item let-item>
+                <ng-template pTemplate="item" let-item>
                     <img [src]="item.itemImageSrc" [alt]="item.alt || 'Gallery Image'" style="width:100%" />
                 </ng-template>
-                <ng-template #thumbnail let-item>
+                <ng-template pTemplate="thumbnail" let-item>
                     <img [src]="item.thumbnailImageSrc" [alt]="item.alt || 'Gallery Thumbnail'" />
                 </ng-template>
             </p-galleria>
@@ -122,10 +122,7 @@ export class MediaDemo implements OnInit {
         }
     ];
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     ngOnInit() {
         this.productService.getProductsSmall().then((products) => {

@@ -156,7 +156,7 @@ export class AppMenu implements OnInit {
                     {
                         label: 'View Source',
                         icon: 'pi pi-fw pi-github',
-                        url: 'https://github.com/primefaces/sakai-ng',
+                        url: 'https://github.com/henrytaby/sakai-ng',
                         target: '_blank'
                     }
                 ]

@@ -80,7 +80,7 @@ type expandedRows = Record<string, boolean>;
                         </p-iconfield>
                     </div>
                 </ng-template>
-                <ng-template #header>
+                <ng-template pTemplate="header">
                     <tr>
                         <th style="min-width: 12rem">
                             <div class="flex justify-between items-center">
@@ -115,12 +115,12 @@ type expandedRows = Record<string, boolean>;
                                     [showOperator]="false"
                                     [showAddButton]="false"
                                 >
-                                    <ng-template #header>
+                                    <ng-template pTemplate="header">
                                         <div class="px-3 pt-3 pb-0">
                                             <span class="font-bold">Agent Picker</span>
                                         </div>
                                     </ng-template>
-                                    <ng-template #filter let-value let-filter="filterCallback">
+                                    <ng-template pTemplate="filter" let-value let-filter="filterCallback">
                                         <p-multiselect
                                             [ngModel]="value"
                                             [options]="representatives"
@@ -129,7 +129,7 @@ type expandedRows = Record<string, boolean>;
                                             optionLabel="name"
                                             styleClass="w-full"
                                         >
-                                            <ng-template let-option #item>
+                                            <ng-template pTemplate="item" let-option>
                                                 <div class="flex items-center gap-2 w-44">
                                                     <img
                                                         [alt]="option.label"
@@ -180,7 +180,7 @@ type expandedRows = Record<string, boolean>;
                                             placeholder="Any"
                                             [style]="{ 'min-width': '12rem' }"
                                         >
-                                            <ng-template let-option #item>
+                                            <ng-template pTemplate="item" let-option>
                                                 <span [class]="'customer-badge status-' + option.value">{{
                                                     option.label
                                                 }}</span>
@@ -307,7 +307,7 @@ type expandedRows = Record<string, boolean>;
             />
 
             <p-table [value]="customers2" [scrollable]="true" scrollHeight="400px" styleClass="mt-4">
-                <ng-template #header>
+                <ng-template pTemplate="header">
                     <tr>
                         <th style="min-width:200px" pFrozenColumn class="font-bold">Name</th>
                         <th style="min-width:100px">Id</th>
@@ -369,7 +369,7 @@ type expandedRows = Record<string, boolean>;
                     ></button>
                     <div class="flex table-header"></div>
                 </ng-template>
-                <ng-template #header>
+                <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 5rem"></th>
                         <th pSortableColumn="name">Name <p-sortIcon field="name" /></th>
@@ -421,7 +421,7 @@ type expandedRows = Record<string, boolean>;
                             <div class="p-4">
                                 <h5>Orders for {{ product.name }}</h5>
                                 <p-table [value]="product.orders" dataKey="id">
-                                    <ng-template #header>
+                                    <ng-template pTemplate="header">
                                         <tr>
                                             <th pSortableColumn="id">Id <p-sortIcon field="price" /></th>
                                             <th pSortableColumn="customer">
@@ -481,7 +481,7 @@ type expandedRows = Record<string, boolean>;
                 groupRowsBy="representative.name"
                 [tableStyle]="{ 'min-width': '60rem' }"
             >
-                <ng-template #header>
+                <ng-template pTemplate="header">
                     <tr>
                         <th>Name</th>
                         <th>Country</th>
@@ -588,17 +588,14 @@ export class TableDemo implements OnInit {
 
     @ViewChild('filter') filter!: ElementRef;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     ngOnInit() {
         this.customerService.getCustomersLarge().then((customers) => {
             this.customers1 = customers;
             this.loading = false;
 
-            // @ts-ignore
+            // @ts-expect-error: Date conversion type mismatch
             this.customers1.forEach((customer) => (customer.date = new Date(customer.date)));
         });
         this.customerService.getCustomersMedium().then((customers) => (this.customers2 = customers));

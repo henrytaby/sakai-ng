@@ -46,7 +46,7 @@ import { Product, ProductService } from '../service/product.service';
                         voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
                         non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                     </p>
-                    <ng-template #footer>
+                    <ng-template pTemplate="footer">
                         <p-button label="Save" (click)="close()" />
                     </ng-template>
                 </p-dialog>
@@ -179,7 +179,7 @@ import { Product, ProductService } from '../service/product.service';
                         <i class="pi pi-exclamation-triangle mr-4" style="font-size: 2rem"> </i>
                         <span>Are you sure you want to proceed?</span>
                     </div>
-                    <ng-template #footer>
+                    <ng-template pTemplate="footer">
                         <p-button
                             label="No"
                             icon="pi pi-times"
@@ -227,10 +227,7 @@ export class OverlayDemo implements OnInit {
 
     selectedProduct!: Product;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     ngOnInit() {
         this.productService.getProductsSmall().then((products) => (this.products = products));

@@ -9031,10 +9031,7 @@ export class CustomerService {
         ];
     }
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     getCustomersMini() {
         return Promise.resolve(this.getData().slice(0, 5));

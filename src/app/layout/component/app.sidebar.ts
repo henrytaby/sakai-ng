@@ -12,8 +12,7 @@ import { AppMenu } from './app.menu';
 export class AppSidebar {
     el = inject(ElementRef);
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
+
+
 }

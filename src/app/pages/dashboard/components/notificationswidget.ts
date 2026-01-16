@@ -16,6 +16,7 @@ import { MenuModule } from 'primeng/menu';
                     icon="pi pi-ellipsis-v"
                     class="p-button-rounded p-button-text p-button-plain"
                     (click)="menu.toggle($event)"
+                    aria-label="Options"
                 ></button>
                 <p-menu #menu [popup]="true" [model]="items"></p-menu>
             </div>

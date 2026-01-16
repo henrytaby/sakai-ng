@@ -74,8 +74,6 @@ export class ChartDemo implements OnInit, OnDestroy {
 
     subscription: Subscription;
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
     constructor() {
         this.subscription = this.layoutService.configUpdate$.pipe(debounceTime(25)).subscribe(() => {
             this.initCharts();

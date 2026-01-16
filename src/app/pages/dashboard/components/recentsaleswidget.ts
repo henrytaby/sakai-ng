@@ -39,6 +39,7 @@ import { Product, ProductService } from '../../service/product.service';
                             type="button"
                             icon="pi pi-search"
                             class="p-button p-component p-button-text p-button-icon-only"
+                            aria-label="Search"
                         ></button>
                     </td>
                 </tr>
@@ -52,10 +53,7 @@ export class RecentSalesWidget implements OnInit {
 
     products!: Product[];
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     ngOnInit() {
         this.productService.getProductsSmall().then((data) => (this.products = data));

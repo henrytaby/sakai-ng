@@ -29,7 +29,7 @@ import { Product, ProductService } from '../service/product.service';
                 <ng-template #header>
                     <div class="flex justify-end">
                         <p-select-button [(ngModel)]="layout" [options]="options" [allowEmpty]="false">
-                            <ng-template #item let-option>
+                            <ng-template pTemplate="item" let-option>
                                 <i
                                     class="pi "
                                     [ngClass]="{ 'pi-bars': option === 'list', 'pi-table': option === 'grid' }"
@@ -41,7 +41,7 @@ import { Product, ProductService } from '../service/product.service';
 
                 <ng-template #list let-items>
                     <div class="flex flex-col">
-                        <div *ngFor="let item of items; let i = index">
+                        @for (item of items; track i; let i = $index) {
                             <div
                                 class="flex flex-col sm:flex-row sm:items-center p-6 gap-4"
                                 [ngClass]="{ 'border-t border-surface': i !== 0 }"
@@ -102,16 +102,16 @@ import { Product, ProductService } from '../service/product.service';
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
                 </ng-template>
 
                 <ng-template #grid let-items>
                     <div class="grid grid-cols-12 gap-4">
-                        <div
-                            *ngFor="let item of items; let i = index"
-                            class="col-span-12 sm:col-span-6 lg:col-span-4 p-2"
-                        >
+                        @for (item of items; track i; let i = $index) {
+                            <div
+                                class="col-span-12 sm:col-span-6 lg:col-span-4 p-2"
+                            >
                             <div
                                 class="p-6 border border-surface-200 dark:border-surface-700 bg-surface-0 dark:bg-surface-900 rounded flex flex-col"
                             >
@@ -177,7 +177,8 @@ import { Product, ProductService } from '../service/product.service';
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            </div>
+                        }
                     </div>
                 </ng-template>
             </p-dataview>
@@ -231,10 +232,7 @@ export class ListDemo implements OnInit {
 
     orderCities: any[] = [];
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 
     ngOnInit() {
         this.productService.getProductsSmall().then((data) => (this.products = data.slice(0, 6)));

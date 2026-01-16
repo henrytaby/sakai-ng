@@ -4,7 +4,7 @@ import { DividerModule } from 'primeng/divider';
 import { RippleModule } from 'primeng/ripple';
 
 @Component({
-    selector: 'pricing-widget',
+    selector: 'app-pricing-widget',
     imports: [DividerModule, ButtonModule, RippleModule],
     template: `
         <div id="pricing" class="py-6 px-6 lg:px-20 my-2 md:my-6">
@@ -35,6 +35,7 @@ import { RippleModule } from 'primeng/ripple';
                                 pRipple
                                 label="Get Started"
                                 class="p-button-rounded border-0 ml-4 font-light leading-tight bg-blue-500 text-white"
+                                aria-label="Get Started"
                             ></button>
                         </div>
                         <p-divider class="w-full bg-surface-200"></p-divider>
@@ -80,6 +81,7 @@ import { RippleModule } from 'primeng/ripple';
                                 pRipple
                                 label="Get Started"
                                 class="p-button-rounded border-0 ml-4 font-light leading-tight bg-blue-500 text-white"
+                                aria-label="Get Started"
                             ></button>
                         </div>
                         <p-divider class="w-full bg-surface-200"></p-divider>
@@ -125,6 +127,7 @@ import { RippleModule } from 'primeng/ripple';
                                 pRipple
                                 label="Try Free"
                                 class="p-button-rounded border-0 ml-4 font-light leading-tight bg-blue-500 text-white"
+                                aria-label="Try Free"
                             ></button>
                         </div>
                         <p-divider class="w-full bg-surface-200"></p-divider>

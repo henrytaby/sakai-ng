@@ -20,7 +20,7 @@ import { Component } from '@angular/core';
                 local environment.
             </p>
             <pre class="app-code">
-<code>git clone https://github.com/primefaces/sakai-ng
+<code>git clone https://github.com/henrytaby/sakai-ng
 npm install
 ng serve</code></pre>
 

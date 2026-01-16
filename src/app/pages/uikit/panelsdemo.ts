@@ -227,20 +227,20 @@ import { ToolbarModule } from 'primeng/toolbar';
                     [minSizes]="[10, 0]"
                     styleClass="mb-8"
                 >
-                    <ng-template #panel>
+                    <ng-template pTemplate="panel">
                         <div class="col flex items-center justify-center">Panel 1</div>
                     </ng-template>
-                    <ng-template #panel>
+                    <ng-template pTemplate="panel">
                         <p-splitter layout="vertical" [panelSizes]="[50, 50]">
-                            <ng-template #panel>
+                            <ng-template pTemplate="panel">
                                 <div style="grow: 1;" class="flex items-center justify-center">Panel 2</div>
                             </ng-template>
-                            <ng-template #panel>
+                            <ng-template pTemplate="panel">
                                 <p-splitter [panelSizes]="[20, 80]">
-                                    <ng-template #panel>
+                                    <ng-template pTemplate="panel">
                                         <div class="col flex items-center justify-center">Panel 3</div>
                                     </ng-template>
-                                    <ng-template #panel>
+                                    <ng-template pTemplate="panel">
                                         <div class="col flex items-center justify-center">Panel 4</div>
                                     </ng-template>
                                 </p-splitter>

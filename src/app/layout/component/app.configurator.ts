@@ -50,6 +50,7 @@ declare interface SurfacesType {
                             type="button"
                             [title]="primaryColor.name"
                             (click)="updateColors($event, 'primary', primaryColor)"
+                            (keydown.enter)="updateColors($event, 'primary', primaryColor)"
                             [ngClass]="{
                                 'outline outline-primary': primaryColor.name === selectedPrimaryColor()
                             }"
@@ -70,6 +71,7 @@ declare interface SurfacesType {
                             type="button"
                             [title]="surface.name"
                             (click)="updateColors($event, 'surface', surface)"
+                            (keydown.enter)="updateColors($event, 'surface', surface)"
                             class="cursor-pointer w-5 h-5 rounded-full flex shrink-0 items-center justify-center p-0 outline-offset-1"
                             [ngClass]="{
                                 'outline outline-primary': selectedSurfaceColor()
@@ -115,30 +117,13 @@ declare interface SurfacesType {
 })
 export class AppConfigurator implements OnInit {
     router = inject(Router);
-
     config: PrimeNG = inject(PrimeNG);
-
     layoutService: LayoutService = inject(LayoutService);
-
     platformId = inject(PLATFORM_ID);
-
     primeng = inject(PrimeNG);
 
     presets = Object.keys(presets);
-
-    showMenuModeButton = signal(!this.router.url.includes('auth'));
-
-    menuModeOptions = [
-        { label: 'Static', value: 'static' },
-        { label: 'Overlay', value: 'overlay' }
-    ];
-
-    ngOnInit() {
-        if (isPlatformBrowser(this.platformId)) {
-            this.onPresetChange(this.layoutService.layoutConfig().preset);
-        }
-    }
-
+    
     surfaces: SurfacesType[] = [
         {
             name: 'slate',
@@ -285,6 +270,13 @@ export class AppConfigurator implements OnInit {
     selectedPreset = computed(() => this.layoutService.layoutConfig().preset);
 
     menuMode = computed(() => this.layoutService.layoutConfig().menuMode);
+    
+    showMenuModeButton = signal(!this.router.url.includes('auth'));
+
+    menuModeOptions = [
+        { label: 'Static', value: 'static' },
+        { label: 'Overlay', value: 'overlay' }
+    ];
 
     primaryColors = computed<SurfacesType[]>(() => {
         const presetPalette = presets[this.layoutService.layoutConfig().preset as KeyOfType<typeof presets>].primitive;
@@ -315,8 +307,14 @@ export class AppConfigurator implements OnInit {
             });
         });
 
-        return palettes;
+            return palettes;
     });
+
+    ngOnInit() {
+        if (isPlatformBrowser(this.platformId)) {
+            this.onPresetChange(this.layoutService.layoutConfig().preset);
+        }
+    }
 
     getPresetExt() {
         const color: SurfacesType = this.primaryColors().find((c) => c.name === this.selectedPrimaryColor()) || {};

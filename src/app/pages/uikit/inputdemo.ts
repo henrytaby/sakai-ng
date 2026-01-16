@@ -369,9 +369,7 @@ export class InputDemo implements OnInit {
         const filtered: any[] = [];
         const query = event.query;
 
-        for (let i = 0; i < (this.autoValue as any[]).length; i++) {
-            const country = (this.autoValue as any[])[i];
-
+        for (const country of (this.autoValue as any[])) {
             if (country.name.toLowerCase().indexOf(query.toLowerCase()) == 0) {
                 filtered.push(country);
             }

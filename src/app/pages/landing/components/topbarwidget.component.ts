@@ -6,7 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { AppFloatingConfigurator } from '@/layout/component/app.floatingconfigurator';
 
 @Component({
-    selector: 'topbar-widget',
+    selector: 'app-topbar-widget',
     imports: [RouterModule, StyleClassModule, ButtonModule, RippleModule, AppFloatingConfigurator],
     template: `<a class="flex items-center" href="#">
             <svg viewBox="0 0 54 40" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-12 mr-2">
@@ -62,7 +62,9 @@ import { AppFloatingConfigurator } from '@/layout/component/app.floatingconfigur
                 <li>
                     <a
                         (click)="router.navigate(['/landing'], { fragment: 'home' })"
+                        (keydown.enter)="router.navigate(['/landing'], { fragment: 'home' })"
                         pRipple
+                        tabindex="0"
                         class="px-0 py-4 text-surface-900 dark:text-surface-0 font-medium text-xl"
                     >
                         <span>Home</span>
@@ -71,7 +73,9 @@ import { AppFloatingConfigurator } from '@/layout/component/app.floatingconfigur
                 <li>
                     <a
                         (click)="router.navigate(['/landing'], { fragment: 'features' })"
+                        (keydown.enter)="router.navigate(['/landing'], { fragment: 'features' })"
                         pRipple
+                        tabindex="0"
                         class="px-0 py-4 text-surface-900 dark:text-surface-0 font-medium text-xl"
                     >
                         <span>Features</span>
@@ -80,7 +84,9 @@ import { AppFloatingConfigurator } from '@/layout/component/app.floatingconfigur
                 <li>
                     <a
                         (click)="router.navigate(['/landing'], { fragment: 'highlights' })"
+                        (keydown.enter)="router.navigate(['/landing'], { fragment: 'highlights' })"
                         pRipple
+                        tabindex="0"
                         class="px-0 py-4 text-surface-900 dark:text-surface-0 font-medium text-xl"
                     >
                         <span>Highlights</span>
@@ -89,7 +95,9 @@ import { AppFloatingConfigurator } from '@/layout/component/app.floatingconfigur
                 <li>
                     <a
                         (click)="router.navigate(['/landing'], { fragment: 'pricing' })"
+                        (keydown.enter)="router.navigate(['/landing'], { fragment: 'pricing' })"
                         pRipple
+                        tabindex="0"
                         class="px-0 py-4 text-surface-900 dark:text-surface-0 font-medium text-xl"
                     >
                         <span>Pricing</span>
@@ -97,8 +105,8 @@ import { AppFloatingConfigurator } from '@/layout/component/app.floatingconfigur
                 </li>
             </ul>
             <div class="flex border-t lg:border-t-0 border-surface py-4 lg:py-0 mt-4 lg:mt-0 gap-2">
-                <button pButton pRipple label="Login" routerLink="/auth/login" [rounded]="true" [text]="true"></button>
-                <button pButton pRipple label="Register" routerLink="/auth/login" [rounded]="true"></button>
+                <button pButton pRipple label="Login" routerLink="/auth/login" [rounded]="true" [text]="true" aria-label="Login"></button>
+                <button pButton pRipple label="Register" routerLink="/auth/login" [rounded]="true" aria-label="Register"></button>
                 <app-floating-configurator [float]="false" />
             </div>
         </div> `
@@ -106,8 +114,5 @@ import { AppFloatingConfigurator } from '@/layout/component/app.floatingconfigur
 export class TopbarWidget {
     router = inject(Router);
 
-    /** Inserted by Angular inject() migration for backwards compatibility */
-    constructor(...args: unknown[]);
 
-    constructor() {}
 }
